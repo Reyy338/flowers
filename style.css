@@ -1,0 +1,141 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: pink;
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* Music Button */
+#toggle-music {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  z-index: 99;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  background: #fff;
+  color: #e91e63;
+  cursor: pointer;
+  box-shadow: 0 3px 5px rgba(0,0,0,0.2);
+}
+
+.container h1 {
+  color: white;
+  font-size: 40px;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+  margin-bottom: 30px;
+}
+
+/* Frame for Bouquet */
+.frame {
+  border: 10px solid white;
+  border-radius: 20px;
+  padding: 10px;
+  background: #fff;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  max-width: 300px;
+}
+
+.bouquet {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Petal Animation */
+.petal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.petal {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  background-image: url('images/petal.png'); /* Use soft transparent pink */
+  background-size: contain;
+  background-repeat: no-repeat;
+  animation: fall 12s linear infinite;
+  opacity: 0.6; /* makes it softly blend */
+  pointer-events: none;
+  z-index: 0;
+  filter: hue-rotate(-10deg) brightness(1.1) saturate(0.8);
+
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(-10%) rotate(0deg);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0.2;
+  }
+}
+
+.start-screen {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 10;
+}
+
+#start-button {
+  font-size: 24px;
+  padding: 15px 30px;
+  background-color: white;
+  color: #e91e63;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+.side-photo {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  width: 200px;
+  height: auto;
+  border: 10px solid white;
+  border-radius: 30px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  background-color: white;
+  padding: 5px;
+  z-index: 1;
+  opacity: 0.95;
+  transition: transform 0.5s ease;
+}
+
+.side-photo:hover {
+  transform: scale(1.05);
+}
+
+#main-content {
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+}
+
+#main-content.reveal {
+  opacity: 1;
+}
